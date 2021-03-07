@@ -14,7 +14,6 @@ public class DistToNPC : MonoBehaviour
 
     Color gizmoColor = Color.green;
     Vector3 pPos;
-    Vector3 nPos;
 
     private void Awake()
     {
@@ -28,9 +27,6 @@ public class DistToNPC : MonoBehaviour
         // Loops through each NPC for distance calculations
         foreach (NPC i in npcList)
         {
-            // grabs the current npc's position, used purely for the gizmo function, alternative would be welcome
-            //TODO: Look more into gizmos so I don't need this hacky solution
-            nPos = i.pos;
             // Distance function for two points on a 3D plane
             float dist = Mathf.Sqrt(((pPos.x - i.pos.x) * (pPos.x - i.pos.x)) + ((pPos.y - i.pos.y) * (pPos.y - i.pos.y)) + ((pPos.z - i.pos.z) * (pPos.z - i.pos.z)));
             // Checks if the distance is less than or equal to the activation range
@@ -42,15 +38,7 @@ public class DistToNPC : MonoBehaviour
             }
             // Otherwise, reset gizmo to green to show we're not within activated range
             else gizmoColor = Color.green;
+            Debug.DrawLine(pPos, i.pos, gizmoColor);
         }
-    }
-
-    //TODO: Resolve bug where gizmo only draws to the last npc in the array.
-    // Finding a way to draw multiple lines could be the solution
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = gizmoColor;
-        // Draws line between the player position and the npc's position
-        Gizmos.DrawLine(pPos, nPos);
     }
 }
