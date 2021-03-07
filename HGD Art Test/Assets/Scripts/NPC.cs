@@ -9,12 +9,18 @@ public class NPC : MonoBehaviour
 {
     public GameObject npc;
     public Vector3 pos;
+    public float distToPlayer;
 
     //TODO: Currently causes issues with gizmos (and other functions) when the NPC itself is moved. Could benefit from an update function, but I'm curious about a more performance alternative.
     private void Awake()
     {
         npc = gameObject;
         pos = transform.position;
+    }
+
+    public void setDist(float d)
+    {
+        distToPlayer = d;
     }
 
     /// <summary>
