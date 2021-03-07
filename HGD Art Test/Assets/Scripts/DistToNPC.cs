@@ -19,14 +19,14 @@ public class DistToNPC : MonoBehaviour
     private void Awake()
     {
          npcList = FindObjectsOfType<NPC>();
-        pPos = player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        pPos = player.transform.position;
         // Loops through each NPC for distance calculations
-        foreach(NPC i in npcList)
+        foreach (NPC i in npcList)
         {
             // grabs the current npc's position, used purely for the gizmo function, alternative would be welcome
             //TODO: Look more into gizmos so I don't need this hacky solution
