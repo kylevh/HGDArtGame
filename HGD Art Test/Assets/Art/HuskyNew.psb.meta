@@ -67,17 +67,17 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   spriteImportData:
-  - name: 
+  - name: HuskyNew_1
     originalName: 
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 0
-      height: 0
+      width: 2000
+      height: 2000
     spriteID: 
     internalID: 0
     spriteBone: []
@@ -4658,7 +4658,29 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -439, y: 710}
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
@@ -4887,7 +4909,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-  generateGOHierarchy: 0
+  generateGOHierarchy: 1
   textureAssetName: HuskyNew Texture
   prefabAssetName: HuskyNew Prefab
   spriteLibAssetName: HuskyNew Sprite Lib
