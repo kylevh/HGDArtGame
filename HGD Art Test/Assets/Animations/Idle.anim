@@ -96,7 +96,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.3
-        value: {x: 0, y: 0, z: 37.486}
+        value: {x: 0, y: 0, z: 44.052}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -945,7 +945,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.3
-        value: 37.486
+        value: 44.052
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2257,7 +2257,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pelvis/Left Back Leg_1/bone_11
+    path: Pelvis/Tail_1/bone_8/bone_9
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2267,7 +2267,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pelvis/Left Back Leg_1/bone_11
+    path: Pelvis/Tail_1/bone_8/bone_9
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2277,7 +2277,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pelvis/Left Back Leg_1/bone_11
+    path: Pelvis/Tail_1/bone_8/bone_9
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2527,7 +2527,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Pelvis/Tail_1/bone_8/bone_9
+    path: Pelvis/Left Back Leg_1/bone_11
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2537,7 +2537,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Pelvis/Tail_1/bone_8/bone_9
+    path: Pelvis/Left Back Leg_1/bone_11
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2547,7 +2547,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Pelvis/Tail_1/bone_8/bone_9
+    path: Pelvis/Left Back Leg_1/bone_11
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
