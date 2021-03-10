@@ -21,15 +21,20 @@ public class NPC : MonoBehaviour
     // The current position of the NPC
     public Vector3 pos;
 
+    // TEMPORARY
+    private DistToNPC gm;
+
     // Stores the current distance to the player
     private double distToPlayer;
     public int status = 0;
 
-    //TODO: Currently causes issues with gizmos (and other functions) when the NPC itself is moved. Could benefit from an update function, but I'm curious about a more performance alternative.
     private void Awake()
     {
         npc = gameObject;
         pos = transform.position;
+
+        // TEMPORARY
+        gm = FindObjectOfType<DistToNPC>();
     }
 
     /// <summary>
@@ -66,6 +71,13 @@ public class NPC : MonoBehaviour
     public void setDist(double d)
     {
         this.distToPlayer = d;
+    }
+
+    // TEMPORARY, REMOVE/REPLACE THIS DEPENDING ON IF THE NPC'S WILL BE MOVING OR NOT
+    private void Update()
+    {
+        gm.CalculateDistance();
+        pos = transform.position;
     }
 
     /// <summary>
