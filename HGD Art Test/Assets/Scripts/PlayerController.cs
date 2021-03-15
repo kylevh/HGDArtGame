@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://github.com/SebLague/Spherical-Gravity
+
 public class PlayerController : MonoBehaviour
 {
     // public vars
