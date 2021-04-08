@@ -20,6 +20,7 @@ using UnityEngine;
 public class DistToNPC : MonoBehaviour
 {
     public GameObject player;
+    public NPC prompter;
 
     public NPC[] npcList;
 
@@ -103,6 +104,8 @@ public class DistToNPC : MonoBehaviour
                 closestNPC = i;
                 // Sets the new closestNPC's status to 2
                 closestNPC.setStatus(2);
+                // Sets our easy-access VPC var so other scripts can find the prompting NPC performantly.
+                prompter = closestNPC;
             }
             // If i's status is already 2 and it is not the same as the closestNPC, set i's status back to 1
             if(i.getStatus() == 2 && !i.Equals(closestNPC))

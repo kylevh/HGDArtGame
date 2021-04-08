@@ -6,6 +6,7 @@ public class Billboard : MonoBehaviour
 {
     private Camera cam;
     public bool useStaticBillboard;
+    public bool isDialogPrompter;
 
     void Start()
     {
@@ -23,6 +24,13 @@ public class Billboard : MonoBehaviour
             transform.rotation = cam.transform.rotation;
         }
 
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        if (!isDialogPrompter)
+        {
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.parent.rotation.z);
+        }
     }
 }
