@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7344138292618503140}
   - component: {fileID: 7344138292618503141}
   - component: {fileID: 7344138292618503138}
+  - component: {fileID: 3379705844454233966}
   m_Layer: 8
   m_Name: Tree
   m_TagString: Untagged
@@ -96,3 +97,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useStaticBillboard: 0
+  isDialogPrompter: 0
+--- !u!65 &3379705844454233966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344138292618503139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

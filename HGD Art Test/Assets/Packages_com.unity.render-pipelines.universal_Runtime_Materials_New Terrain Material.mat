@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-34557039046605219
+--- !u!114 &-1303407448084628270
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stone
-  m_Shader: {fileID: 4800000, guid: 69c1f799e772cb6438f56c23efccb782, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Packages_com.unity.render-pipelines.universal_Runtime_Materials_New Terrain
+    Material
+  m_Shader: {fileID: -6465566751694194690, guid: 21ff975bb9ec7d24faae1eb2450e9bda, type: 3}
+  m_ShaderKeywords: _TERRAIN_INSTANCED_PERPIXEL_NORMAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -32,13 +33,9 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_f1f4015382684bcab27fbfd38b262a0c:
-        m_Texture: {fileID: 2800000, guid: 76dcea46cedcbcc4ca2e914dd92b83bc, type: 3}
+    - Texture2D_1a96e14e628f410ba654b58c6f5f6b24:
+        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 76dcea46cedcbcc4ca2e914dd92b83bc, type: 3}
-        m_Scale: {x: 20, y: 15}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -65,8 +62,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 76dcea46cedcbcc4ca2e914dd92b83bc, type: 3}
-        m_Scale: {x: 20, y: 15}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask0:
         m_Texture: {fileID: 0}
@@ -149,54 +146,40 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_16991e415eb046b8b3eb587014f05ef7: 0
-    - Vector1_57b73c074ba242258fc94395c7997930: 35
-    - Vector1_6f8b2deb00854191aa28aa446670a3ea: -20
-    - Vector1_9bd635f290414056836157a53ed60f6b: -2
-    - Vector1_ce057d5ed88b4857ac83b0a36962ef68: 5
-    - Vector1_e0e2d9a23f0d41b885355f62733fea91: -9.8
-    - _AlphaClip: 0
-    - _Blend: 0
+    - Vector1_32a0a1e3956e484eb0d0e6bddff11bf4: 0.005
     - _BumpScale: 1
-    - _ClearCoatMask: 0
-    - _ClearCoatSmoothness: 0
-    - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
     - _HeightTransition: 0
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
     - _Metallic2: 0
     - _Metallic3: 0
+    - _Mode: 0
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
-    - _Parallax: 0.005
-    - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _Smoothness: 0.5
-    - _Smoothness0: 0.5
-    - _Smoothness1: 0.5
-    - _Smoothness2: 0.5
-    - _Smoothness3: 0.5
+    - _Parallax: 0.02
+    - _Smoothness0: 1
+    - _Smoothness1: 1
+    - _Smoothness2: 1
+    - _Smoothness3: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Surface: 0
+    - _TERRAIN_INSTANCED_PERPIXEL_NORMAL: 0
+    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Vector2_813b0cf8f04a4cb48037b02bd506a556: {r: 1, g: 0, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
