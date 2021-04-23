@@ -20,6 +20,7 @@ public class NPC : MonoBehaviour
     public GameObject npc;
     // The current position of the NPC
     public Vector3 pos;
+    public Vector3 offset;
 
     // TEMPORARY
     private DistToNPC gm;
