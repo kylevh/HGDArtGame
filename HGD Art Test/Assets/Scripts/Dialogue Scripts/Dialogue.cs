@@ -10,6 +10,7 @@ public class Dialogue
 {
     [Header("Customize Text")]
     [SerializeField] [TextArea] List<string> lines; //The dialogue lines
+    [SerializeField] public string name;
     [SerializeField] public TMP_FontAsset textFont; //Font for specific NPC
     [SerializeField] public Color textColor; //Color for specific NPC
     [SerializeField] public TextMeshProUGUI textContainer; //Not in use anymore?

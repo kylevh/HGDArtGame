@@ -20,7 +20,9 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogueBox; //Game object that holds everything
     [SerializeField] TextMeshProUGUI dialogue; //Text that will be displayed on HUD
+    [SerializeField] TextMeshProUGUI npcName; //name
     public PlayerInput inputs;
+    public PlayerController controller;
     public bool inDialogue;
 
     public static DialogueManager instance { get; private set; }
@@ -28,13 +30,14 @@ public class DialogueManager : MonoBehaviour
     public event Action endDialogue;
 
     Dialogue dialog;
-    int currentLine = 0;
-    bool typing;
+    [SerializeField] int currentLine = 0;
+    [SerializeField] bool typing;
 
     private void Awake()
     {
         instance = this;
-        inputs = FindObjectOfType<PlayerInput>(); 
+        inputs = FindObjectOfType<PlayerInput>();
+        controller = FindObjectOfType<PlayerController>();
     }
 
     public void HandleUpdate()
@@ -55,7 +58,9 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator showDialogue(Dialogue dialog)
     {
+        npcName.text = "";
         inDialogue = true;
+        controller.canMove = false;
         yield return new WaitForEndOfFrame();
 
         startDialogue?.Invoke();
@@ -63,10 +68,12 @@ public class DialogueManager : MonoBehaviour
         this.dialog = dialog;
         dialogueBox.SetActive(true); //Will change to animation when I get the chance
         StartCoroutine(printText(dialog.Lines[0], Color.black, .05f, dialog.sound, dialog.textFont));
+        npcName.text = dialog.name;
     }
 
     public void closeDialogue()
     {
+        controller.canMove = true;
         inDialogue = false;
         currentLine = 0;
         dialogueBox.SetActive(false); //END OF DIALOGE
@@ -89,13 +96,12 @@ public class DialogueManager : MonoBehaviour
         {
             dialogue.text += input[i];
 
-            if (i % 3 == 0)
+            if (i % 2 == 0)
                 SoundManager.instance.playSound(chooseRandomVoiceClip(sound));
             yield return new WaitForSeconds(charDelay);
         }
 
         typing = false;
-        inDialogue = false;
     }
 
 

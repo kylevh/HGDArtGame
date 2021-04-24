@@ -46,15 +46,19 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void Talk()
+    public void startTalk()
     {
-        if(!DialogueManager.instance.inDialogue)
+        if (!DialogueManager.instance.inDialogue)
+        {
+            Debug.Log("startTalk played");
             StartCoroutine(DialogueManager.instance.showDialogue(dialogue));
+        }
     }
 
     public void exitTalk()
     {
-
+        if (DialogueManager.instance.inDialogue)
+            DialogueManager.instance.closeDialogue();
     }
 
     public int getStatus() //Gets status of interactable, 0 if not near, 1 if near, and 2 if prompting the player

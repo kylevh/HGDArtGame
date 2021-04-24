@@ -26,20 +26,15 @@ public class UIManager : MonoBehaviour
         prompt = FindObjectOfType<Prompter>();
         inputs = FindObjectOfType<PlayerInput>();
     }
-    private void LateUpdate()
+
+
+    public void fadeOutPrompt()
     {
-        enterDialogueCheck();
+        prompt.fadeOut();
     }
 
-    void enterDialogueCheck()
+    public void fadeInPrompt()
     {
-        if(inputs.interact)
-        {
-            if(!inDialogue)
-            {
-                inDialogue = true;
-                prompt.fadeOut();
-            }
-        }
+        prompt.fadeIn();
     }
 }

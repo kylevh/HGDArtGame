@@ -55,8 +55,7 @@ public class Prompter : MonoBehaviour
             NPC checkTarget = targetNPC();
             if(checkTarget != null)
             {
-                checkTarget.Talk();
-                Debug.Log("interacted");
+                checkTarget.startTalk();
             }
         }
     }

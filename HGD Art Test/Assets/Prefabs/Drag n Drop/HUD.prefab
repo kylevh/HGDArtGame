@@ -1001,7 +1001,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 8547163070086676789}
   dialogue: {fileID: 3032756014876952267}
-  finishedDialogue: 0
+  npcName: {fileID: 1560908597252659798}
+  inputs: {fileID: 0}
+  controller: {fileID: 0}
+  inDialogue: 0
+  currentLine: 0
+  typing: 0
 --- !u!1 &3613763226343081004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8169743618841939648}
   - component: {fileID: 714674045740607542}
+  - component: {fileID: 6925634117568594018}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -2806,7 +2812,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 8547163070086676789}
   dialogue: {fileID: 3032756014876952267}
-  finishedDialogue: 0
+  npcName: {fileID: 0}
+  inputs: {fileID: 0}
+  controller: {fileID: 0}
+  inDialogue: 0
+  currentLine: 0
+  typing: 0
+--- !u!95 &6925634117568594018
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547163070086676789}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 196c9fd81b30ba64fad1efe7048d17c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8626908873899539590
 GameObject:
   m_ObjectHideFlags: 0
