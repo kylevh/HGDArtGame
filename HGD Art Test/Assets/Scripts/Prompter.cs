@@ -48,7 +48,7 @@ public class Prompter : MonoBehaviour
 
     //Kyle's random messy code
 
-    void interactCheck()
+    void interactCheck() //If you click the interact button, it will check if there is a target in range and if so, start talk
     {
         if (inputs.interact)
         {
@@ -56,6 +56,7 @@ public class Prompter : MonoBehaviour
             if(checkTarget != null)
             {
                 checkTarget.startTalk();
+                UIManager.ui.setTarget(checkTarget.gameObject);
             }
         }
     }
@@ -86,8 +87,8 @@ public class Prompter : MonoBehaviour
 
     void dialoguePromptUpdate() //Updates dialogue box to either fade in or fade out depending on if there's any NPCs in range
     {
-        if (inRangeOfAnyNPC() && !ui.inDialogue) fadeIn(); 
-        else if (!inRangeOfAnyNPC()) fadeOut();
+        if (inRangeOfAnyNPC() && !DialogueManager.instance.inDialogue) fadeIn(); 
+        else if (!inRangeOfAnyNPC() || DialogueManager.instance.inDialogue) fadeOut();
     }
 
     public void fadeOut() //Fades out dialogue box and text

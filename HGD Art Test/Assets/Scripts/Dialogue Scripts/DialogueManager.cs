@@ -5,15 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//https://www.youtube.com/watch?v=2CmG7ZtrWso&ab_channel=GameDevExperiments
+// Based off:
+// https://www.youtube.com/watch?v=2CmG7ZtrWso&ab_channel=GameDevExperiments
 
 /* Events (startDialogue, endDialogue)
  * Functions -
- *      showDialogue (has to be called through NPC and pass Dialogue class, will start dialogue and update event)
+ *      showDialogue (has to be called through NPC and pass Dialogue class, will start dialogue and update GameState)
  *      closeDialogue (closes dialogue box and resets everything, can be called anywhere)
  *      HandleUpdate (Switches GameState of PlayerController from Roaming to Dialogue mode)
  *      
  *      a ton of bugs in this but i'm working on it :3
+ *      
+ * Author: Kyle Huynh
  */
 
 public class DialogueManager : MonoBehaviour
@@ -58,6 +61,7 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator showDialogue(Dialogue dialog)
     {
+        UIManager.ui.enableDialogueCam();
         npcName.text = "";
         inDialogue = true;
         controller.canMove = false;
@@ -73,6 +77,7 @@ public class DialogueManager : MonoBehaviour
 
     public void closeDialogue()
     {
+        UIManager.ui.disableDialogueCam();
         controller.canMove = true;
         inDialogue = false;
         currentLine = 0;
@@ -81,9 +86,12 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    //Will print each individual character of text
-    //Takes in what string, color, font, text delay, and voice
-    protected IEnumerator printText(string input, Color tColor, float charDelay, AudioClip[] sound, TMP_FontAsset tFont) //, AudioClip[] sound, TMP_fontasset tFont;
+
+    /* Takes in dialogue text, color, font, etc... and prints them out one by one.
+     * also updates variables that tell us whether or not we're in dialogue for other
+     * scripts to know.
+     */
+    protected IEnumerator printText(string input, Color tColor, float charDelay, AudioClip[] sound, TMP_FontAsset tFont) 
     {
         typing = true;
         inDialogue = true;
@@ -100,7 +108,6 @@ public class DialogueManager : MonoBehaviour
                 SoundManager.instance.playSound(chooseRandomVoiceClip(sound));
             yield return new WaitForSeconds(charDelay);
         }
-
         typing = false;
     }
 

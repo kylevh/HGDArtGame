@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
     private DistToNPC gm;
     public bool isMoving;
 
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] Dialogue dialogue; //Contains all the NPC data
 
     private void Awake()
     {
@@ -46,11 +46,10 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void startTalk()
+    public void startTalk() //Starts talk with NPC, checks if already in dialogue so no repeats
     {
         if (!DialogueManager.instance.inDialogue)
         {
-            Debug.Log("startTalk played");
             StartCoroutine(DialogueManager.instance.showDialogue(dialogue));
         }
     }

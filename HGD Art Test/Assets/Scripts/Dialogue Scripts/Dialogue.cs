@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/* Kyle Huynh
+ * 
+ * Should be attached to NPC, handles dialogue and other text settings.
+ * 
+ */
 
 [System.Serializable]
 public class Dialogue

@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    private UIManager ui;
     public CinemachineTargetGroup targetGroup;
 
     private void Update()
