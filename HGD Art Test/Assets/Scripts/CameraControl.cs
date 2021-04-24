@@ -23,6 +23,7 @@ public class CameraControl : MonoBehaviour
         {
             transform.RotateAround(obj.transform.position, transform.up, Input.GetAxis("Mouse X") * speed);
             transform.RotateAround(obj.transform.position, transform.right, Input.GetAxis("Mouse Y") * speed);
+            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Camera.main.transform.rotation, speed * Time.deltaTime);
         }
 
         // Zooming
