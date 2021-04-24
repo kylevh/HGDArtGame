@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /* User Interface Manager 
  * Author: Kyle Huynh
@@ -13,12 +14,15 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager ui;
     public Prompter prompt;
     public PlayerInput inputs;
     public bool inDialogue = false;
+    public CinemachineTargetGroup targetGroup;
 
     public void Awake()
     {
+        ui = this;
         prompt = FindObjectOfType<Prompter>();
         inputs = FindObjectOfType<PlayerInput>();
     }

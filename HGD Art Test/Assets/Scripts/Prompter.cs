@@ -17,7 +17,7 @@ public class Prompter : MonoBehaviour
     {
         distChecker = FindObjectOfType<DistToNPC>();
         pBoard = Instantiate(dialogPromptBoard, new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
-        ui = FindObjectOfType<UIManager>();
+        this.ui = UIManager.ui;
         fadeOut();
     }
 
