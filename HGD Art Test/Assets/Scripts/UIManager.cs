@@ -3,25 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* User Interface Manager 
- * by Kyle Huynh
+ * Author: Kyle Huynh
  * 
  * Anything that wants to manipulate the HUD in-game should pass through this script
  * Handles all the user interface updates
+ * MUST TAG OBJECT WITH 'UIManager'
  * 
  */
 
-[RequireComponent(typeof(PlayerInput))]
 public class UIManager : MonoBehaviour
 {
+    public Prompter prompt;
+    public PlayerInput inputs;
     public bool inDialogue = false;
 
-    private void Update()
+    public void Awake()
     {
-        
+        prompt = FindObjectOfType<Prompter>();
+        inputs = FindObjectOfType<PlayerInput>();
+    }
+    private void LateUpdate()
+    {
+        enterDialogueCheck();
     }
 
-    void dialogueCheck()
+    void enterDialogueCheck()
     {
-        PlayerInput.input.interact;
+        if(inputs.interact)
+        {
+            if(!inDialogue)
+            {
+                inDialogue = true;
+                prompt.fadeOut();
+            }
+        }
     }
 }

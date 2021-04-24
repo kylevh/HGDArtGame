@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public static PlayerInput input;
     public bool q_Input { get; private set; }
     public bool interact { get; private set; }
     public bool space_Input { get; private set; }

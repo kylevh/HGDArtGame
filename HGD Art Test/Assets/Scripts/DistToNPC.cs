@@ -21,7 +21,6 @@ public class DistToNPC : MonoBehaviour
 {
     public GameObject player;
     public NPC prompter;
-
     public NPC[] npcList;
 
     [Tooltip("The max distance you want the NPC to activate from")]

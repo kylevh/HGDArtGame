@@ -8,6 +8,7 @@ public class Prompter : MonoBehaviour
     public GameObject dialogPromptBoard;
     public DistToNPC distChecker;
     private GameObject pBoard;
+    public UIManager ui;
 
     //kyle's vars
     public bool promptVisible = true;
@@ -16,7 +17,8 @@ public class Prompter : MonoBehaviour
     {
         distChecker = FindObjectOfType<DistToNPC>();
         pBoard = Instantiate(dialogPromptBoard, new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
-        fadeOut(); //Prompt box will immeditely fade out on start
+        ui = FindObjectOfType<UIManager>();
+        fadeOut();
     }
 
     void FixedUpdate()
@@ -67,25 +69,39 @@ public class Prompter : MonoBehaviour
 
     void dialoguePromptUpdate() //Updates dialogue box to either fade in or fade out depending on if there's any NPCs in range
     {
-        if (inRangeOfAnyNPC()) fadeIn();
+        if (inRangeOfAnyNPC() && !ui.inDialogue) fadeIn(); 
         else if (!inRangeOfAnyNPC()) fadeOut();
     }
 
-    void fadeOut() //Fades out dialogue box and text
+    public void fadeOut() //Fades out dialogue box and text
     {
-        if (promptVisible)
+        if (promptVisible || ui.inDialogue)
         {
             LeanTween.color(pBoard, Color.clear, .4f);
             promptVisible = false;
         }
     }
 
-    void fadeIn()
+    public void fadeIn()
     {
         if (!promptVisible)
         {
             LeanTween.color(pBoard, Color.white, .4f);
             promptVisible = true;
         }
+    }
+
+    GameObject targetNPC() //Returns the gameobject of the closest NPC. If nothing's close, return null.
+    {
+        GameObject target = null;
+        foreach (NPC i in distChecker.npcList)
+        {
+            if (i.getStatus() == 2)
+            {
+                target = i.transform.gameObject;
+            }
+        }
+
+        return target;
     }
 }
