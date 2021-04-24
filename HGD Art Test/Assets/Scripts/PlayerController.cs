@@ -15,17 +15,29 @@ public class PlayerController : MonoBehaviour
     Rigidbody rigidbody;
     Animator anim;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
-     
-    // Update is called once per frame
+
     void Update()
     {
-        // Calculate movement:
+        doMovement();
+
+
+    }
+
+    void FixedUpdate()
+    {
+        // Apply movement to rigidbody
+        Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+        rigidbody.MovePosition(rigidbody.position + localMove);
+    }
+
+    void doMovement()
+    {
+        // Calculates movement:
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
@@ -38,29 +50,22 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("vertical", inputY);
         anim.SetFloat("magnitude", moveDir.magnitude);
 
-        if(inputX > 0) //Checks if player is facing either left or right, if not, set x scale to opposite depending on input
+        if (inputX > 0) //Checks if player is facing either left or right, if not, set x scale to opposite depending on input
         {
-            if(transform.localScale.x < 0) 
+            if (transform.GetChild(0).localScale.x < 0) //GetChild(0) 'HuskyNew' must be first gameObject below 'Player'
             {
-                float rightScale = transform.localScale.x * -1;
-                transform.localScale = new Vector3(rightScale, transform.localScale.y, transform.localScale.z);
+                float rightScale = transform.GetChild(0).localScale.x * -1;
+                transform.GetChild(0).localScale = new Vector3(rightScale, transform.GetChild(0).localScale.y, transform.GetChild(0).localScale.z);
             }
         }
         if (inputX < 0)
         {
-            if (transform.localScale.x > 0)
+            if (transform.GetChild(0).localScale.x > 0)
             {
-                float leftScale = transform.localScale.x * -1;
-                transform.localScale = new Vector3(leftScale, transform.localScale.y, transform.localScale.z);
+                float leftScale = transform.GetChild(0).localScale.x * -1;
+                transform.GetChild(0).localScale = new Vector3(leftScale, transform.GetChild(0).localScale.y, transform.GetChild(0).localScale.z);
             }
         }
-    }
-
-    void FixedUpdate()
-    {
-        // Apply movement to rigidbody
-        Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
-        rigidbody.MovePosition(rigidbody.position + localMove);
     }
 
 }

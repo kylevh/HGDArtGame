@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Kyle's Scenes/Graphics Test 1.unity
+    path: Assets/Scenes/Kyle's Scenes/Old scene stuff/Graphics Test 1.unity
     guid: a5d965623a6d1a54e95ac965ec7c53b5
   m_configObjects: {}

@@ -20,6 +20,7 @@ public class NPC : MonoBehaviour
     public GameObject npc;
     // The current position of the NPC
     public Vector3 pos;
+    //Offset value for dialogue prompt (Not implemented yet)
     public Vector3 offset;
 
     // TEMPORARY
@@ -75,7 +76,7 @@ public class NPC : MonoBehaviour
     }
 
     // TEMPORARY, REMOVE/REPLACE THIS DEPENDING ON IF THE NPC'S WILL BE MOVING OR NOT
-    private void Update()
+    private void FixedUpdate()
     {
         gm.CalculateDistance();
         pos = transform.position;
