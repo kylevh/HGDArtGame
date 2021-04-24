@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
     public float speed = 3.5f;
     float sensitivity = 15f;
 
-    float minFov = 35;
+    float minFov = 50;
     float maxFov = 90;
     // Start is called before the first frame update
     void Start()
