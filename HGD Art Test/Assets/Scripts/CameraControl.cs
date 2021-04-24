@@ -23,11 +23,10 @@ public class CameraControl : MonoBehaviour
         {
             transform.RotateAround(obj.transform.position, transform.up, Input.GetAxis("Mouse X") * speed);
             transform.RotateAround(obj.transform.position, transform.right, Input.GetAxis("Mouse Y") * speed);
-            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Camera.main.transform.rotation, speed * Time.deltaTime);
+            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Camera.main.transform.rotation, 10 * Time.deltaTime);
         }
 
         // Zooming
-
         float fov = Camera.main.fieldOfView;
         fov += Input.GetAxis("Mouse ScrollWheel") * -sensitivity;
         fov = Mathf.Clamp(fov, minFov, maxFov);
