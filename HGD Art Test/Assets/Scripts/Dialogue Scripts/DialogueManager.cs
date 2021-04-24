@@ -1,0 +1,109 @@
+using System.Collections;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+//https://www.youtube.com/watch?v=2CmG7ZtrWso&ab_channel=GameDevExperiments
+
+/* Events (startDialogue, endDialogue)
+ * Functions -
+ *      showDialogue (has to be called through NPC and pass Dialogue class, will start dialogue and update event)
+ *      closeDialogue (closes dialogue box and resets everything, can be called anywhere)
+ *      HandleUpdate (Switches GameState of PlayerController from Roaming to Dialogue mode)
+ *      
+ *      a ton of bugs in this but i'm working on it :3
+ */
+
+public class DialogueManager : MonoBehaviour
+{
+    [SerializeField] GameObject dialogueBox; //Game object that holds everything
+    [SerializeField] TextMeshProUGUI dialogue; //Text that will be displayed on HUD
+    public PlayerInput inputs;
+    public bool inDialogue;
+
+    public static DialogueManager instance { get; private set; }
+    public event Action startDialogue;
+    public event Action endDialogue;
+
+    Dialogue dialog;
+    int currentLine = 0;
+    bool typing;
+
+    private void Awake()
+    {
+        instance = this;
+        inputs = FindObjectOfType<PlayerInput>(); 
+    }
+
+    public void HandleUpdate()
+    {
+        if(inputs.interact && !typing)
+        {
+            currentLine++;
+            if (currentLine < dialog.Lines.Count) //Go to next line of dialogue if there is more lines
+            {
+                StartCoroutine(printText(dialog.Lines[currentLine], Color.black, .05f, dialog.sound, dialog.textFont));
+            }
+            else //If there are no lines left and interact button is pressed, close
+            {
+                closeDialogue();
+            }
+        }
+    }
+
+    public IEnumerator showDialogue(Dialogue dialog)
+    {
+        inDialogue = true;
+        yield return new WaitForEndOfFrame();
+
+        startDialogue?.Invoke();
+
+        this.dialog = dialog;
+        dialogueBox.SetActive(true); //Will change to animation when I get the chance
+        StartCoroutine(printText(dialog.Lines[0], Color.black, .05f, dialog.sound, dialog.textFont));
+    }
+
+    public void closeDialogue()
+    {
+        inDialogue = false;
+        currentLine = 0;
+        dialogueBox.SetActive(false); //END OF DIALOGE
+        endDialogue?.Invoke();
+    }
+
+
+    //Will print each individual character of text
+    //Takes in what string, color, font, text delay, and voice
+    protected IEnumerator printText(string input, Color tColor, float charDelay, AudioClip[] sound, TMP_FontAsset tFont) //, AudioClip[] sound, TMP_fontasset tFont;
+    {
+        typing = true;
+        inDialogue = true;
+        dialogue.text = "";
+        dialogue.font = tFont;
+        dialogue.color = tColor;
+
+        //Types each character in string
+        for (int i = 0; i < input.Length; i++)
+        {
+            dialogue.text += input[i];
+
+            if (i % 3 == 0)
+                SoundManager.instance.playSound(chooseRandomVoiceClip(sound));
+            yield return new WaitForSeconds(charDelay);
+        }
+
+        typing = false;
+        inDialogue = false;
+    }
+
+
+    AudioClip chooseRandomVoiceClip(AudioClip[] abc)
+    {
+        int index = UnityEngine.Random.Range(0, abc.Length);
+        return abc[index];
+
+    }
+
+}

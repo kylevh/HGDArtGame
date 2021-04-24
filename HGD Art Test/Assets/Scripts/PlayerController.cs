@@ -4,6 +4,8 @@ using UnityEngine;
 
 // https://github.com/SebLague/Spherical-Gravity
 
+public enum GameState { Roaming, inDialogue}
+
 public class PlayerController : MonoBehaviour
 {
     // public vars
@@ -15,17 +17,32 @@ public class PlayerController : MonoBehaviour
     Rigidbody rigidbody;
     Animator anim;
 
+    GameState state;
+    public bool canMove = true;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+
+        DialogueManager.instance.startDialogue += () =>
+        {
+            state = GameState.inDialogue;
+        };
+
+        DialogueManager.instance.endDialogue += () =>
+        {
+            if(state == GameState.inDialogue)
+                state = GameState.Roaming;
+        };
     }
 
     void Update()
     {
-        doMovement();
-
-
+        if (canMove)
+            doMovement();
+        else
+            moveAmount = new Vector3(0, 0, 0);
     }
 
     void FixedUpdate()

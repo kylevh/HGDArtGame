@@ -9,12 +9,14 @@ public class Prompter : MonoBehaviour
     public DistToNPC distChecker;
     private GameObject pBoard;
     public UIManager ui;
+    PlayerInput inputs;
 
     //kyle's vars
     public bool promptVisible = true;
 
     void Awake()
     {
+        inputs = FindObjectOfType<PlayerInput>();
         distChecker = FindObjectOfType<DistToNPC>();
         pBoard = Instantiate(dialogPromptBoard, new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
         this.ui = UIManager.ui;
@@ -25,6 +27,7 @@ public class Prompter : MonoBehaviour
     {
         updatePromptPosition();
         dialoguePromptUpdate();
+        interactCheck();
     }
 
     void updatePromptPosition()
@@ -34,6 +37,7 @@ public class Prompter : MonoBehaviour
 
             if (i.getStatus() == 2)
             {
+                
                 pBoard.transform.SetParent(i.transform);
                 pBoard.transform.localPosition = i.offset; //Sets dialogue prompt position to Vector3 value from NPC script (for easier adjustments per NPC)
                 //Debug.Log("Reposition Prompt Board!!!");
@@ -43,6 +47,20 @@ public class Prompter : MonoBehaviour
 
 
     //Kyle's random messy code
+
+    void interactCheck()
+    {
+        if (inputs.interact)
+        {
+            NPC checkTarget = targetNPC();
+            if(checkTarget != null)
+            {
+                checkTarget.Talk();
+                Debug.Log("interacted");
+            }
+        }
+    }
+
     bool inRangeOfAnyNPC()  //Will check if any NPC is currently in range of Player
     {
         int inRange = 0;
@@ -91,14 +109,14 @@ public class Prompter : MonoBehaviour
         }
     }
 
-    GameObject targetNPC() //Returns the gameobject of the closest NPC. If nothing's close, return null.
+    NPC targetNPC() //Returns the gameobject of the closest NPC. If nothing's close, return null.
     {
-        GameObject target = null;
+        NPC target = null;
         foreach (NPC i in distChecker.npcList)
         {
             if (i.getStatus() == 2)
             {
-                target = i.transform.gameObject;
+                target = i;
             }
         }
 
