@@ -22,7 +22,7 @@ public class CameraControl : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             transform.RotateAround(obj.transform.position, transform.up, Input.GetAxis("Mouse X") * speed);
-            transform.RotateAround(obj.transform.position, transform.right, Input.GetAxis("Mouse Y") * speed);
+            //transform.RotateAround(obj.transform.position, transform.right, Input.GetAxis("Mouse Y") * speed);
             obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Camera.main.transform.rotation, 10 * Time.deltaTime);
         }
 
