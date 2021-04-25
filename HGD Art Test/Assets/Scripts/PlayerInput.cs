@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Kyle Huynh
+ * 
+ * Centralize all player input into one script
+ */
+
 public class PlayerInput : MonoBehaviour
 {
     public bool q_Input { get; private set; }

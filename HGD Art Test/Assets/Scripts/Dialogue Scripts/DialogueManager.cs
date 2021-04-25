@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void closeDialogue()
-    {
+    { 
         UIManager.ui.disableDialogueCam();
         controller.canMove = true;
         inDialogue = false;
