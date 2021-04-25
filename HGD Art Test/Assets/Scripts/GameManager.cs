@@ -8,7 +8,7 @@ using UnityEngine;
  * of the PlayerController (so there's no movement while talking)
  * 
  */
-public enum GameState { Roaming, inDialogue } //In the future, we can add GameStates like "Battle" and such. 
+public enum GameState { Roaming, inDialogue } //In the future, we can add GameStates like "Battle" or "Menu". 
 
 public class GameManager : MonoBehaviour
 {
